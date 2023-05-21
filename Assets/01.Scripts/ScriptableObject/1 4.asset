@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46eb224a89d506a43bc4cf76898f8742, type: 3}
+  m_Name: 1 4
+  m_EditorClassIdentifier: 
+  enemyName: e
+  enemyHp: 50
+  enemyDamege: 0
+  enemySpeed: 0
+  buttonNum: 0
+  GclickObject: {fileID: 0}
+  saveRandom: 0
