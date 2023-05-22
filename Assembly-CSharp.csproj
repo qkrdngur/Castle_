@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{FF8CFA1A-CF68-FF29-007B-D9D109F88175}</ProjectGuid>
+    <ProjectGuid>{5F53AFFF-9DD5-BBC1-90FC-36E5302EFD14}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -63,13 +63,13 @@
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\01.Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\01.Scripts\UI\DrogAndDrop.cs" />
+    <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\spring.cs" />
     <Compile Include="Assets\01.Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\CameraTeddy3d.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\WheelController.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\ChestDemo.cs" />
     <Compile Include="Assets\01.Scripts\manager\UiManager.cs" />
-    <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\spring.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\Teddy3d.cs" />
-    <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\CameraTeddy3d.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\02.Assets\GameAssets\Julien Tonsuso\Modular Fantasy Bridges\README.txt" />
