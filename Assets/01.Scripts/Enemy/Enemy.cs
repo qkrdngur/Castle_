@@ -47,16 +47,31 @@ public class Enemy : MonoBehaviour
         {
             if (isHp)
             {
-                if (lm == LayerMask.GetMask("Castle"))
+                if (lm ==  (1 << LayerMask.NameToLayer("Castle")) )
                 {
                     if (atEnemy.Length > 0)
+                    {
                         atEnemy[0].gameObject.GetComponent<CastleHp>().castleHp -= 5;
+                    }
                     else
+                    {
                         ani.SetTrigger("walk");
+                        atEnemy = null;
+                        findEnemy = null;
+                    }
                 }
                 else
                 {
-                    atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
+                    if(atEnemy.Length > 0)
+                    {
+                       atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
+                    }
+                    else
+                    {
+                        ani.SetTrigger("walk");
+                        atEnemy=null;
+                        findEnemy = null;
+                    }
                 }
               //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
                 yield return new WaitForSeconds(1.2f);
@@ -70,9 +85,9 @@ public class Enemy : MonoBehaviour
         Attack();
         Follow();
         Hp();
-        Debug.Log(lm.GetType());
-        if(findEnemy.Length > 0)
-         Debug.Log(findEnemy[0].name);
+        if(atEnemy.Length > 0)
+         Debug.Log(atEnemy[0].name);
+        Debug.Log(atEnemy.Length);
     }
 
     private void Hp()

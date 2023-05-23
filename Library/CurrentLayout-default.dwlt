@@ -124,7 +124,7 @@ MonoBehaviour:
   m_MinSize: {x: 779, y: 442}
   m_MaxSize: {x: 16004, y: 8042}
   vertical: 0
-  controlID: 143
+  controlID: 111
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 201, y: 442}
   m_MaxSize: {x: 4001, y: 8042}
   vertical: 1
-  controlID: 38
+  controlID: 62
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -662,7 +662,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 38428
+  m_LastSelectedObjectID: -2500
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -755,22 +755,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/01.Scripts/Enemy
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 61
   m_LastFolders:
-  - Assets
+  - Assets/01.Scripts/Enemy
   m_LastFoldersGridSize: 61
   m_LastProjectPath: "C:\\Users\\user\\OneDrive\\\uBB38\uC11C\\GitHub\\Castle_"
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: c64e0000
-    m_LastClickedID: 20166
-    m_ExpandedIDs: 00000000c64e0000c84e0000ca4e0000cc4e0000ce4e0000
+    m_SelectedIDs: f84e0000
+    m_LastClickedID: 20216
+    m_ExpandedIDs: 00000000c64e0000c84e0000ca4e0000cc4e0000ce4e000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -823,9 +823,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 7af8ffff
-    m_LastClickedInstanceID: -1926
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: fcf6ffff
+    m_LastClickedInstanceID: -2308
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: 7e970000e67f0000b04400007a660000e48e0000fc4a0000f4520000b852000096440000247e00008c4d000098730000ecc700009a710000de580000123e0000f2400000425700008254000000000000bc410000fc3e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -911,7 +911,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 0
+  m_LastVerticalScrollValue: 675.2001
   m_GlobalObjectId: 
   m_LockTracker:
     m_IsLocked: 0
