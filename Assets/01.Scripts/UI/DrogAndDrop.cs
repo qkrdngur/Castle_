@@ -17,6 +17,8 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     private UiManager uiManager;
     private EnemySpawner spawner;
 
+    private bool isLeft, isRight;
+
     void Awake()
     {
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
@@ -51,7 +53,8 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
        instPos = Camera.main.ScreenToWorldPoint(screenPoint);
 
-        if (instPos.x! <= 52)
+
+        if (CheckBreak())
         {
             for (int i = 0; i < 5; i++)
             {
@@ -65,5 +68,23 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
                 }
             }
         }
+    }
+
+    bool CheckBreak()
+    {
+        if (UiManager.instance.towerPos.Length == 1)
+        {
+            return (instPos.z >= 15) && (instPos.z <= -15) && (instPos.x >= 52);
+        }
+        else if (UiManager.instance.towerPos[0].activeSelf == false)
+        {
+            return (instPos.z <= -15) && (instPos.x >= 52);
+        }
+        else if (UiManager.instance.towerPos[1].activeSelf == false)
+        {
+            return (instPos.z >= 15) && (instPos.x >= 52);
+        }
+        else
+            return (instPos.x >= 52);
     }
 }

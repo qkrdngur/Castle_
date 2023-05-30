@@ -85,9 +85,7 @@ public class Enemy : MonoBehaviour
         Attack();
         Follow();
         Hp();
-        if(atEnemy.Length > 0)
-         Debug.Log(atEnemy[0].name);
-        Debug.Log(atEnemy.Length);
+        Debug.Log(isFindEnemy);
     }
 
     private void Hp()
@@ -154,10 +152,10 @@ public class Enemy : MonoBehaviour
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
             //Castle에 다가가고 있을 때
-            if (findEnemy[0].gameObject.layer != LayerMask.GetMask("Castle"))
-                isFindEnemy = true;
-            else
+            if (findEnemy.Length > 1 && findEnemy[1].gameObject.CompareTag("Castle"))
                 isFindEnemy = false;
+            else
+                isFindEnemy = true;
 
             if (atEnemy.Length > 0)
             {
@@ -170,6 +168,7 @@ public class Enemy : MonoBehaviour
         }
         else // 적이 감지 안되있을때
         {
+            Debug.Log("fffffffff");
             ani.SetTrigger("walk");
             isFindEnemy=false;
         }
