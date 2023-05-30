@@ -53,7 +53,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
        instPos = Camera.main.ScreenToWorldPoint(screenPoint);
 
-
+        //Debug.Log(CheckBreak());
         if (CheckBreak())
         {
             for (int i = 0; i < 5; i++)
@@ -72,15 +72,15 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     bool CheckBreak()
     {
-        if (UiManager.instance.towerPos.Length == 1)
+        if (uiManager.towerPos.Length == 1)
         {
             return (instPos.z >= 15) && (instPos.z <= -15) && (instPos.x >= 52);
         }
-        else if (UiManager.instance.towerPos[0].activeSelf == false)
+        else if (uiManager.towerPos[0].activeSelf == false)
         {
             return (instPos.z <= -15) && (instPos.x >= 52);
         }
-        else if (UiManager.instance.towerPos[1].activeSelf == false)
+        else if (uiManager.towerPos[1].activeSelf == false)
         {
             return (instPos.z >= 15) && (instPos.x >= 52);
         }

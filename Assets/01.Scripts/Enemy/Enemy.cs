@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
         Attack();
         Follow();
         Hp();
-        Debug.Log(isFindEnemy);
+        Debug.Log(atEnemy.Length);
     }
 
     private void Hp()
@@ -168,7 +168,6 @@ public class Enemy : MonoBehaviour
         }
         else // 적이 감지 안되있을때
         {
-            Debug.Log("fffffffff");
             ani.SetTrigger("walk");
             isFindEnemy=false;
         }
