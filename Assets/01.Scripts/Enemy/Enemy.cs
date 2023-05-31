@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
         Attack();
         Follow();
         Hp();
-        Debug.Log(atEnemy.Length);
+        Debug.Log(findEnemy.Length);
     }
 
     private void Hp()
