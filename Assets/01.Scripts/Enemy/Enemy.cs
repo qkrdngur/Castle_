@@ -85,7 +85,7 @@ public class Enemy : MonoBehaviour
         Attack();
         Follow();
         Hp();
-        Debug.Log(findEnemy.Length);
+        Debug.Log(atEnemy.Length);
     }
 
     private void Hp()
@@ -148,9 +148,9 @@ public class Enemy : MonoBehaviour
             agent.stoppingDistance = stopping + 2;
         else
             agent.stoppingDistance = stopping;
-        
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
+            if(findEnemy[0].gameObject.layer == LayerMask.NameToLayer("Castle"))
             //Castle에 다가가고 있을 때
             if (findEnemy.Length > 1 && findEnemy[1].gameObject.CompareTag("Castle"))
                 isFindEnemy = false;

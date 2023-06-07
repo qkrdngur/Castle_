@@ -5,6 +5,7 @@ using UnityEngine;
 public class CastleHp : MonoBehaviour
 {
     public float castleHp = 100;
+    public int cnt = 0;
     public static CastleHp Instance;
     Animator anim;
     void Start()
@@ -19,6 +20,7 @@ public class CastleHp : MonoBehaviour
         if(castleHp <= 0)
         {
             anim.SetTrigger("down");
+            cnt = 1;
         }
 
         if(transform.position.y < -10)
