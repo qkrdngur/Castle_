@@ -156,13 +156,14 @@ public class Enemy : MonoBehaviour
             if (findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Castle")
                 || findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Enemy"))
                 findEnemy = null;
+            //여기서부터
 
             //Castle에 다가가고 있을 때
             if (findEnemy.Length > 1 && findEnemy[1].gameObject.CompareTag("Castle"))
                 isFindEnemy = false;
             else
                 isFindEnemy = true;
-
+            
             if (atEnemy.Length > 0)
             {
                 Vector3 dir = new Vector3();
@@ -176,8 +177,8 @@ public class Enemy : MonoBehaviour
         {
             ani.SetTrigger("walk");
             isFindEnemy=false;
-            atEnemy = null;
             findEnemy = null;
+            atEnemy = null;
         }
          agent.enabled = true;
     }
