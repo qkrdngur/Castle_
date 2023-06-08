@@ -758,6 +758,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castleHp: 100
+  cnt: 0
 --- !u!1 &85594422
 GameObject:
   m_ObjectHideFlags: 0
@@ -2255,6 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castleHp: 100
+  cnt: 0
 --- !u!95 &400022286
 Animator:
   serializedVersion: 5
@@ -12575,6 +12577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castleHp: 100
+  cnt: 0
 --- !u!95 &1731376932
 Animator:
   serializedVersion: 5
@@ -15388,6 +15391,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1858135252, guid: f330ca999dfe33746acd681959a10470, type: 3}
+      propertyPath: manager
+      value: 
+      objectReference: {fileID: 11400000, guid: 71598dfb4eed662499ceadc9062bb5ca, type: 2}
     - target: {fileID: 1858135252, guid: f330ca999dfe33746acd681959a10470, type: 3}
       propertyPath: lm.m_Bits
       value: 128
