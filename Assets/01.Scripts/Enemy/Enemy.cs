@@ -10,25 +10,19 @@ public class Enemy : MonoBehaviour
     #region Header
     private UiManager uiManager;
 
-    [SerializeField]
-    private EnemyManager manager;
-    //public EnemyManager EnemyManager { set { manager = value; } }
-
     Animator ani;
     NavMeshAgent agent;
     Collider[] findEnemy, atEnemy;
 
-    [SerializeField]
-    LayerMask lm;
-    Vector3 box, findBox;
+    private LayerMask enemyLayer = 1 << 7;
+    private LayerMask castleLayer = 1 << 8;
+    private Vector3 box, findBox;
 
     private bool isFindEnemy, isHp = false;
 
-    [SerializeField]
-    private int enemyHp = 50;
+    [SerializeField] private int enemyHp = 50;
 
-    [SerializeField]
-    private int stopping;
+    [SerializeField] private int stopping;
     #endregion
 
     private void Awake()
@@ -49,7 +43,7 @@ public class Enemy : MonoBehaviour
         {
             if (isHp)
             {
-                if (lm ==  (1 << LayerMask.NameToLayer("Castle")) )
+                if (!isFindEnemy)
                 {
                     if (atEnemy.Length > 0)
                     {
@@ -103,15 +97,17 @@ public class Enemy : MonoBehaviour
     {
         if (agent.enabled == true)
         {
-            if (findEnemy[0].gameObject.layer == (1 << LayerMask.NameToLayer("Enemy")))
+            if (isFindEnemy)
             {
-                lm = LayerMask.GetMask("Enemy");
+                agent.stoppingDistance = stopping;
+
                 Vector3 dir = new Vector3(findEnemy[0].transform.position.x, transform.position.y, findEnemy[0].transform.position.z);
                 agent.SetDestination(dir);
             }
             else
             {
-                lm = LayerMask.GetMask("Castle");
+                agent.stoppingDistance = stopping + 2;
+
                 if (transform.position.z <= 0)
                 {
                     if (uiManager.towerPos[0].activeSelf == true)
@@ -143,26 +139,29 @@ public class Enemy : MonoBehaviour
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
 
-        findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation,lm);
-        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, lm);
+        findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation);
+        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation , enemyLayer | castleLayer);
 
-        if (lm == LayerMask.GetMask("Castle"))
-            agent.stoppingDistance = stopping + 2;
-        else
-            agent.stoppingDistance = stopping;
 
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
-            if (findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Castle")
-                || findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Enemy"))
-                findEnemy = null;
-            //여기서부터
+            //if (findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Castle")
+            //    || findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Enemy"))
+            //    findEnemy = null;
 
-            //Castle에 다가가고 있을 때
-            if (findEnemy.Length > 1 && findEnemy[1].gameObject.CompareTag("Castle"))
-                isFindEnemy = false;
-            else
-                isFindEnemy = true;
+            for(int i = 0; i < findEnemy.Length; i++)
+            {
+                if(findEnemy[i].gameObject.layer == (1 << LayerMask.NameToLayer("Enemy")))
+                {
+                    isFindEnemy = true;
+                }
+            }
+
+            ////Castle에 다가가고 있을 때
+            //if (findEnemy.Length > 1 && findEnemy[1].gameObject.CompareTag("Castle"))
+            //    isFindEnemy = false;
+            //else
+            //    isFindEnemy = true;
             
             if (atEnemy.Length > 0)
             {
