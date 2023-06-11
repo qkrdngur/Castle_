@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
     Collider[] findEnemy, atEnemy;
 
-    private LayerMask enemyLayer = 1 << 7;
-    private LayerMask castleLayer = 1 << 8;
+    private LayerMask enemyLayer = 1 << 7;//적(enemy) 레이어
+    private LayerMask castleLayer = 1 << 8;//성(castle) 레이어
     private Vector3 box, findBox;
 
     private bool isFindEnemy, isHp = false;
@@ -145,10 +145,6 @@ public class Enemy : MonoBehaviour
 
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
-            //if (findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Castle")
-            //    || findEnemy[0].gameObject.layer != LayerMask.NameToLayer("Enemy"))
-            //    findEnemy = null;
-
             for(int i = 0; i < findEnemy.Length; i++)
             {
                 if(findEnemy[i].gameObject.layer == (1 << LayerMask.NameToLayer("Enemy")))
@@ -157,12 +153,6 @@ public class Enemy : MonoBehaviour
                 }
             }
 
-            ////Castle에 다가가고 있을 때
-            //if (findEnemy.Length > 1 && findEnemy[1].gameObject.CompareTag("Castle"))
-            //    isFindEnemy = false;
-            //else
-            //    isFindEnemy = true;
-            
             if (atEnemy.Length > 0)
             {
                 Vector3 dir = new Vector3();

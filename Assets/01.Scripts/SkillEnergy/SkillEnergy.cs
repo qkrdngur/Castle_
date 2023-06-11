@@ -7,6 +7,7 @@ public class SkillEnergy : MonoBehaviour
 {
     Slider m_Slider;
     [SerializeField]
+    [Range(0f, 10f)]
     private float mana = 10;
 
     void Start()
@@ -16,6 +17,9 @@ public class SkillEnergy : MonoBehaviour
 
     void Update()
     {
-        
+        m_Slider.value = mana;
+
+        if(mana <= 10)
+          mana = Time.fixedTime;
     }
 }
