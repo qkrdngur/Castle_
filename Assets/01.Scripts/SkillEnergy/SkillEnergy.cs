@@ -10,16 +10,31 @@ public class SkillEnergy : MonoBehaviour
     [Range(0f, 10f)]
     private float mana = 10;
 
-    void Start()
+    void Awake()
     {
         m_Slider = GetComponent<Slider>();
+    }
+
+    void Start()
+    {
+        StartCoroutine(IncreaseMana());
+    }
+
+    IEnumerator IncreaseMana()
+    {
+        while(true)
+        {
+            if(mana < 10)
+            {
+                yield return new WaitForSeconds(1f);
+                mana++;
+            }
+            yield return null;
+        }
     }
 
     void Update()
     {
         m_Slider.value = mana;
-
-        if(mana <= 10)
-          mana = Time.fixedTime;
     }
 }

@@ -22,11 +22,6 @@ public class EnemyManager : ScriptableObject
     public float EnemyDamege { get { return enemyDamege; } }
 
     [SerializeField]
-    private float enemySpeed;
-
-    public float EnemySpeed { get { return enemySpeed; } }
-
-    [SerializeField]
     private int buttonNum;
 
     public int ButtonNum { get; set; }
