@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class SkillEnergy : MonoBehaviour
 {
+    public static SkillEnergy instance;
+
     Slider m_Slider;
     [SerializeField]
     [Range(0f, 10f)]
-    private float mana = 10;
+    public float mana = 10;
 
     void Awake()
     {

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: 
   enemyHp: 0
   enemyDamege: 0
-  enemySpeed: 0
   buttonNum: 0
   GclickObject: {fileID: 0}
   saveRandom: 0
+  mana: 2

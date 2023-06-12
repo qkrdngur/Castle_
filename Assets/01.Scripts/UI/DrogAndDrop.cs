@@ -17,8 +17,6 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     private UiManager uiManager;
     private EnemySpawner spawner;
 
-    private bool isLeft, isRight;
-
     void Awake()
     {
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
@@ -41,6 +39,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
+        //if(SkillEnergy.instance.mana == 10)
         //마우스 포인터가 화면 밖에 못나가게
         Cursor.lockState = CursorLockMode.Confined;
 

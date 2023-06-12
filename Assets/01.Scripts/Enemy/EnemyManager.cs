@@ -35,4 +35,9 @@ public class EnemyManager : ScriptableObject
     private int saveRandom;
 
     public int SaveRandom { get; set; }
+
+    [SerializeField]
+    private int mana;
+
+    public int Mana { get; set; }
 }
