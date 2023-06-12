@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             int temp = savearr[i];
-            manager.SaveRandom = Random.Range(0, 6);
+            manager.SaveRandom = Random.Range(0, 5);
             savearr[i] = manager.SaveRandom;
             manager.SaveRandom = temp;
             uiManager.images[i].sprite = uiManager.sprites[manager.SaveRandom];

@@ -14,6 +14,11 @@ public class SkillEnergy : MonoBehaviour
 
     void Awake()
     {
+        if(instance == null)
+        {
+            instance = new SkillEnergy();
+        }
+
         m_Slider = GetComponent<Slider>();
     }
 

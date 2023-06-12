@@ -31,15 +31,11 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     public void OnDrag(PointerEventData eventData)
     {
-
         transform.position = eventData.position;
-       // currentPos = eventData.position;
-
     }
 
     void IEndDragHandler.OnEndDrag(PointerEventData eventData)
     {
-        //if(SkillEnergy.instance.mana == 10)
         //마우스 포인터가 화면 밖에 못나가게
         Cursor.lockState = CursorLockMode.Confined;
 
@@ -59,7 +55,12 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
             {
                 if (manager.GClickObject.name == uiManager.button[i].name)
                 {
-                    Instantiate(spawner.enemyPrefabs[spawner.savearr[i]], instPos, Quaternion.identity);
+                    Debug.Log(SkillEnergy.instance.mana);
+                    if(SkillEnergy.instance.mana < manager.Mana)
+                    {
+                        SkillEnergy.instance.mana -= manager.Mana;
+                        Instantiate(spawner.enemyPrefabs[spawner.savearr[i]], instPos, Quaternion.identity);
+                    }
 
                     uiManager.images[i].sprite = uiManager.sprites[manager.ButtonNum];
                     spawner.savearr[i] = manager.ButtonNum;
