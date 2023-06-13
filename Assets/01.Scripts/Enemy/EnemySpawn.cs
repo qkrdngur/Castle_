@@ -23,11 +23,11 @@ public class EnemySpawn : MonoBehaviour
     {
         for(int i = 0; i < 6; i++)
         {
-            randNum = Random.Range(0, 6);
+            randNum = Random.Range(0, 5);
             if(saveIdx != randNum)
             {
                 int n;
-
+                Instantiate( spawner.enemyPrefabs[randNum]);
             }
         }
     }
