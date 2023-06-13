@@ -8,6 +8,10 @@ using System;
 public class Enemy : MonoBehaviour
 {
     #region Header
+
+    [SerializeField]
+    private EnemyManager manager;
+
     private UiManager uiManager;
 
     Animator ani;

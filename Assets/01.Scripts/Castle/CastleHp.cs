@@ -16,7 +16,6 @@ public class CastleHp : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(castleHp);
         if(castleHp <= 0)
         {
             anim.SetTrigger("down");

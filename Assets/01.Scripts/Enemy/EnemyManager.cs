@@ -39,5 +39,5 @@ public class EnemyManager : ScriptableObject
     [SerializeField]
     private int mana;
 
-    public int Mana { get; set; }
+    public int Mana { get { return mana; } }
 }

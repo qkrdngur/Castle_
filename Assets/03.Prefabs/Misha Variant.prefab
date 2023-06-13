@@ -157,7 +157,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4538014058132089141, guid: af73389a110b3e5478efa63aff1fc7a2, type: 3}
       propertyPath: m_Name
-      value: Misha
+      value: Misha Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4540653034333441013, guid: af73389a110b3e5478efa63aff1fc7a2, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -224,9 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277a9e0c3d9f55b4e9c7077c842e7bd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manager: {fileID: 0}
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
+  manager: {fileID: 11400000, guid: 71598dfb4eed662499ceadc9062bb5ca, type: 2}
   enemyHp: 50
   stopping: 5

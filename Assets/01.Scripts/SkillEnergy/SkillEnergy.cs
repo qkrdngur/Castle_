@@ -5,20 +5,12 @@ using UnityEngine.UI;
 
 public class SkillEnergy : MonoBehaviour
 {
-    public static SkillEnergy instance;
-
     Slider m_Slider;
-    [SerializeField]
-    [Range(0f, 10f)]
-    public float mana = 10;
+
+    public float mana = 0;
 
     void Awake()
     {
-        if(instance == null)
-        {
-            instance = new SkillEnergy();
-        }
-
         m_Slider = GetComponent<Slider>();
     }
 
@@ -43,5 +35,6 @@ public class SkillEnergy : MonoBehaviour
     void Update()
     {
         m_Slider.value = mana;
+        Debug.Log(mana);
     }
 }

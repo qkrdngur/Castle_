@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 1 5
   m_EditorClassIdentifier: 
   enemyName: 
-  enemyHp: 0
+  enemyHp: 50
   enemyDamege: 0
   buttonNum: 0
   GclickObject: {fileID: 0}

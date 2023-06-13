@@ -10,19 +10,23 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     public static Vector2 DefaultPos, currentPos, mousePos;
     public static Vector3 instPos;
 
-    [SerializeField]
-    private EnemyManager manager;
-    public EnemyManager EnemyManager { set { manager = value; } }
+    public EnemyManager manager;
 
+    private SkillEnergy skillE;
     private UiManager uiManager;
     private EnemySpawner spawner;
 
     void Awake()
     {
+        skillE = GameObject.Find("PlayerMana").GetComponent<SkillEnergy>();
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
         spawner = GameObject.Find("EnemySpawner").GetComponent<EnemySpawner>();
     }
 
+    void Update()
+    {
+
+    }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
@@ -51,19 +55,18 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         //Debug.Log(CheckBreak());
         if (CheckBreak())
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
             {
                 if (manager.GClickObject.name == uiManager.button[i].name)
                 {
-                    Debug.Log(SkillEnergy.instance.mana);
-                    if(SkillEnergy.instance.mana < manager.Mana)
+                    if(skillE.mana >= manager.Mana)
                     {
-                        SkillEnergy.instance.mana -= manager.Mana;
+                        skillE.mana -= manager.Mana;
                         Instantiate(spawner.enemyPrefabs[spawner.savearr[i]], instPos, Quaternion.identity);
-                    }
 
-                    uiManager.images[i].sprite = uiManager.sprites[manager.ButtonNum];
-                    spawner.savearr[i] = manager.ButtonNum;
+                        uiManager.images[i].sprite = uiManager.sprites[manager.ButtonNum];
+                        spawner.savearr[i] = manager.ButtonNum;
+                    }
                     break;
                 }
             }
