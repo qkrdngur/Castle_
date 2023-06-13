@@ -56,20 +56,22 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\01.Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\01.Scripts\UI\DrogAndDrop.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\MaterialMover.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\spring.cs" />
     <Compile Include="Assets\01.Scripts\Castle\CastleHp.cs" />
-    <Compile Include="Assets\01.Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\01.Scripts\Ally\Ally.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\CameraTeddy3d.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\WheelController.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\ChestDemo.cs" />
     <Compile Include="Assets\01.Scripts\SkillEnergy\SkillEnergy.cs" />
-    <Compile Include="Assets\01.Scripts\Enemy\EnemyManager.cs" />
+    <Compile Include="Assets\01.Scripts\Ally\AllyManager.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\01.Scripts\manager\UiManager.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\Teddy3d.cs" />
+    <Compile Include="Assets\01.Scripts\Ally\AllySpawner.cs" />
+    <Compile Include="Assets\01.Scripts\Enemy\Enemy.cs" />
+    <Compile Include="Assets\01.Scripts\Enemy\EnemySpawn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\02.Assets\GameAssets\Julien Tonsuso\Modular Fantasy Bridges\README.txt" />

@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     #region Header
 
     [SerializeField]
-    private EnemyManager manager;
+    private AllyManager manager;
 
     private UiManager uiManager;
 
@@ -62,18 +62,18 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    if(atEnemy.Length > 0)
+                    if (atEnemy.Length > 0)
                     {
-                       atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
+                        atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
                     }
                     else
                     {
                         ani.SetTrigger("walk");
-                        atEnemy=null;
+                        atEnemy = null;
                         findEnemy = null;
                     }
                 }
-              //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
+                //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
                 yield return new WaitForSeconds(1.2f);
             }
             yield return null;
@@ -90,7 +90,7 @@ public class Enemy : MonoBehaviour
 
     private void Hp()
     {
-        if(enemyHp <= 0)
+        if (enemyHp <= 0)
         {
             isHp = false;
             atEnemy[0].gameObject.GetComponent<Enemy>().ani.SetTrigger("die");
@@ -144,14 +144,14 @@ public class Enemy : MonoBehaviour
         findBox = new Vector3(20, 20, 20);
 
         findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation);
-        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation , enemyLayer | castleLayer);
+        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, enemyLayer | castleLayer);
 
 
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
-            for(int i = 0; i < findEnemy.Length; i++)
+            for (int i = 0; i < findEnemy.Length; i++)
             {
-                if(findEnemy[i].gameObject.layer == (1 << LayerMask.NameToLayer("Enemy")))
+                if (findEnemy[i].gameObject.layer == (1 << LayerMask.NameToLayer("Enemy")))
                 {
                     isFindEnemy = true;
                 }
@@ -169,10 +169,10 @@ public class Enemy : MonoBehaviour
         else // 적이 감지 안되있을때
         {
             ani.SetTrigger("walk");
-            isFindEnemy=false;
+            isFindEnemy = false;
             findEnemy = null;
             atEnemy = null;
         }
-         agent.enabled = true;
+        agent.enabled = true;
     }
 }
