@@ -7,28 +7,57 @@ public class EnemySpawn : MonoBehaviour
     private AllySpawner spawner;
 
     private int randNum = 0;
-    private int saveIdx = 0;
+    private int[] saveIdx = new int[6];
+    private bool isrand = false;
 
-    void Start()
+    void Awake()
     {
         spawner = transform.Find("AllySpawner").GetComponent<AllySpawner>();
+    }
+    void Start()
+    {
+        //rand ·£´ý
+        StartCoroutine(RandomIdx());
     }
 
     void Update()
     {
-        
+        //¼Ä¼º
+        isnt();
     }
 
-    void RandomIdx()
+    void isnt()
     {
-        for(int i = 0; i < 6; i++)
+        for (int i = 0; i < 6; i++)
         {
-            randNum = Random.Range(0, 5);
-            if(saveIdx != randNum)
+            Instantiate(spawner.enemyPrefabs[saveIdx[i]], transform.position, Quaternion.identity);
+        }
+    }
+
+    IEnumerator RandomIdx()
+    {
+        while (true)
+        {
+            if (isrand)
             {
-                int n;
-                Instantiate( spawner.enemyPrefabs[randNum]);
+                for (int i = 0; i < 6; i++)
+                {
+                    saveIdx[i] = i + 1;
+                }
+
+                int temp, idx1, idx2;
+                for (int i = 0; i < 20; i++)
+                {
+                    idx1 = Random.Range(0, 6);
+                    idx2 = Random.Range(0, 6);
+                    temp = saveIdx[idx1];
+                    saveIdx[idx1] = saveIdx[idx2];
+                    saveIdx[idx2] = temp;
+                }
+
+                isrand = !isrand;
             }
+            yield return null;
         }
     }
 }
