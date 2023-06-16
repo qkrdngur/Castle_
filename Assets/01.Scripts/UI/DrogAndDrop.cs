@@ -20,7 +20,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
     {
         skillE = GameObject.Find("PlayerMana").GetComponent<SkillEnergy>();
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
-        spawner = GameObject.Find("EnemySpawner").GetComponent<AllySpawner>();
+        spawner = GameObject.Find("AllySpawner").GetComponent<AllySpawner>();
     }
 
     void Update()
