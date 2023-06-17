@@ -35,6 +35,5 @@ public class SkillEnergy : MonoBehaviour
     void Update()
     {
         m_Slider.value = mana;
-        Debug.Log(mana);
     }
 }

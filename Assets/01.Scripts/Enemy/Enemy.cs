@@ -9,8 +9,7 @@ public class Enemy : MonoBehaviour
 {
     #region Header
 
-    [SerializeField]
-    private AllyManager manager;
+    public AllyManager manager;
 
     private UiManager uiManager;
 
@@ -18,13 +17,13 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
     Collider[] findEnemy, atEnemy;
 
-    private LayerMask enemyLayer = 1 << 7;//적(enemy) 레이어
+    private LayerMask enemyLayer = 1 << 3;//아군(enemy) 레이어
     private LayerMask castleLayer = 1 << 8;//성(castle) 레이어
     private Vector3 box, findBox;
 
     private bool isFindEnemy, isHp = false;
 
-    [SerializeField] private int enemyHp = 50;
+    public int enemyHp = 50;
 
     [SerializeField] private int stopping;
     #endregion
@@ -64,7 +63,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (atEnemy.Length > 0)
                     {
-                        atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
+                        atEnemy[0].gameObject.GetComponent<Ally>().enemyHp -= 5;
                     }
                     else
                     {
@@ -93,7 +92,7 @@ public class Enemy : MonoBehaviour
         if (enemyHp <= 0)
         {
             isHp = false;
-            atEnemy[0].gameObject.GetComponent<Enemy>().ani.SetTrigger("die");
+            ani.SetTrigger("die");
         }
     }
 
@@ -151,7 +150,7 @@ public class Enemy : MonoBehaviour
         {
             for (int i = 0; i < findEnemy.Length; i++)
             {
-                if (findEnemy[i].gameObject.layer == (1 << LayerMask.NameToLayer("Enemy")))
+                if (findEnemy[i].gameObject.layer == enemyLayer)
                 {
                     isFindEnemy = true;
                 }

@@ -12,7 +12,8 @@ public class AllySpawner : MonoBehaviour
     [SerializeField]
     private List<AllyManager> enemyManager;
 
-    public GameObject[] enemyPrefabs;
+    public GameObject[] pPrefabs;
+    public GameObject[] ePrefabs;
 
     [SerializeField]
     private AllyManager manager;

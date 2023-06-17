@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class CastleHp : MonoBehaviour
 {
+    UiManager uiManager;
     public float castleHp = 100;
     public int cnt = 0;
-    public static CastleHp Instance;
     Animator anim;
     void Start()
     {
+        uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
         anim = GetComponent<Animator>();
     }
 
@@ -24,5 +25,10 @@ public class CastleHp : MonoBehaviour
 
         if(transform.position.y < -10)
             gameObject.SetActive(false);
+
+        if (uiManager.towerPos[2].activeSelf == false)
+        {
+
+        }
     }
 }

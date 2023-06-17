@@ -62,7 +62,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
                     if(skillE.mana >= manager.Mana)
                     {
                         skillE.mana -= manager.Mana;
-                        Instantiate(spawner.enemyPrefabs[spawner.savearr[i]], instPos, Quaternion.identity);
+                        Instantiate(spawner.pPrefabs[spawner.savearr[i]], instPos, Quaternion.identity);
 
                         uiManager.images[i].sprite = uiManager.sprites[manager.ButtonNum];
                         spawner.savearr[i] = manager.ButtonNum;

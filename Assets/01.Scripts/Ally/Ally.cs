@@ -24,7 +24,7 @@ public class Ally : MonoBehaviour
 
     private bool isFindEnemy, isHp = false;
 
-    [SerializeField] private int enemyHp = 50;
+    public int enemyHp = 50;
 
     [SerializeField] private int stopping;
     #endregion
@@ -64,7 +64,7 @@ public class Ally : MonoBehaviour
                 {
                     if(atEnemy.Length > 0)
                     {
-                       atEnemy[0].gameObject.GetComponent<Ally>().enemyHp -= 5;
+                       atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
                     }
                     else
                     {
@@ -85,7 +85,6 @@ public class Ally : MonoBehaviour
         Attack();
         Follow();
         Hp();
-        Debug.Log(atEnemy.Length);
     }
 
     private void Hp()
@@ -93,7 +92,7 @@ public class Ally : MonoBehaviour
         if(enemyHp <= 0)
         {
             isHp = false;
-            atEnemy[0].gameObject.GetComponent<Ally>().ani.SetTrigger("die");
+            ani.SetTrigger("die");
         }
     }
 
@@ -151,7 +150,7 @@ public class Ally : MonoBehaviour
         {
             for(int i = 0; i < findEnemy.Length; i++)
             {
-                if(findEnemy[i].gameObject.layer == (1 << LayerMask.NameToLayer("Enemy")))
+                if(findEnemy[i].gameObject.layer == enemyLayer)
                 {
                     isFindEnemy = true;
                 }
