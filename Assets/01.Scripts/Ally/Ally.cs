@@ -155,14 +155,17 @@ public class Ally : MonoBehaviour
                     isFindEnemy = true;
                 }
             }
-
-            if (atEnemy.Length > 0)
+            
+            for(int i = 0; i < atEnemy.Length; i++)
             {
-                Vector3 dir = new Vector3();
-                dir.x = atEnemy[0].transform.position.y - transform.position.y;
-                transform.eulerAngles += dir;
-                ani.SetTrigger("attack");
-                isHp = true;
+                if (Vector3.Distance(atEnemy[i].transform.position, transform.position) == stopping)
+                {
+                    Vector3 dir = new Vector3();
+                    dir.x = atEnemy[0].transform.position.y - transform.position.y;
+                    transform.eulerAngles += dir;
+                    ani.SetTrigger("attack");
+                    isHp = true;
+                }
             }
         }
         else // 적이 감지 안되있을때

@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     NavMeshAgent agent;
     Collider[] findEnemy, atEnemy;
 
+    private GameObject saveObj;
+
     private LayerMask enemyLayer = 1 << 3;//아군(enemy) 레이어
     private LayerMask castleLayer = 1 << 8;//성(castle) 레이어 
     private Vector3 box, findBox;
@@ -87,7 +89,6 @@ public class Enemy : MonoBehaviour
         Attack();
         Follow();
         Hp();
-        Debug.Log(atEnemy.Length);
     }
 
     private void Hp()
@@ -107,7 +108,7 @@ public class Enemy : MonoBehaviour
             {
                 agent.stoppingDistance = stopping;
 
-                Vector3 dir = new Vector3(findEnemy[0].transform.position.x, transform.position.y, findEnemy[0].transform.position.z);
+                Vector3 dir = new Vector3(saveObj.transform.position.x, transform.position.y, saveObj.transform.position.z);
                 agent.SetDestination(dir);
             }
             else
@@ -151,21 +152,29 @@ public class Enemy : MonoBehaviour
 
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
-            for (int i = 0; i < atEnemy.Length; i++)
+            for (int i = 0; i < findEnemy.Length; i++)
             {
-                if (atEnemy[i].gameObject.layer == enemyLayer)
+                if(findEnemy[i].gameObject.layer == enemyLayer |
+                    findEnemy[i].gameObject.layer == castleLayer)
+                {
+                    saveObj = findEnemy[i].gameObject;
+                }
+                if (findEnemy[i].gameObject.layer == enemyLayer)
                 {
                     isFindEnemy = true;
                 }
             }
 
-            if (atEnemy.Length > 0)
+            for (int i = 0; i < atEnemy.Length; i++)
             {
-                Vector3 dir = new Vector3();
-                dir.x = atEnemy[0].transform.position.y - transform.position.y;
-                transform.eulerAngles += dir;
-                ani.SetTrigger("attack");
-                isHp = true;
+                if (Vector3.Distance(atEnemy[i].transform.position, transform.position) == stopping)
+                {
+                    Vector3 dir = new Vector3();
+                    dir.x = atEnemy[0].transform.position.y - transform.position.y;
+                    transform.eulerAngles += dir;
+                    ani.SetTrigger("attack");
+                    isHp = true;
+                }
             }
         }
         else // 적이 감지 안되있을때
