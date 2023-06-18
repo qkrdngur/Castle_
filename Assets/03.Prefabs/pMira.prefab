@@ -9,11 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_Name
-      value: Mummy_Mon Variant
+      value: pMira
       objectReference: {fileID: 0}
     - target: {fileID: 100070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 100070, guid: 3353e4f866c39d043a315b41717c9bb7, type: 3}
       propertyPath: m_TagString
@@ -472,9 +472,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 11400000, guid: cbabb9b1ab3903f4995641d9fc37b473, type: 2}
-  lm:
-    serializedVersion: 2
-    m_Bits: 0
   enemyHp: 50
   stopping: 5
 --- !u!195 &8097752502552343284

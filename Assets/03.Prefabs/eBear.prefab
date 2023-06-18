@@ -159,6 +159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: eBear
       objectReference: {fileID: 0}
+    - target: {fileID: 4538014058132089141, guid: af73389a110b3e5478efa63aff1fc7a2, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 4540653034333441013, guid: af73389a110b3e5478efa63aff1fc7a2, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.115999

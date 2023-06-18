@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     Collider[] findEnemy, atEnemy;
 
     private LayerMask enemyLayer = 1 << 3;//아군(enemy) 레이어
-    private LayerMask castleLayer = 1 << 8;//성(castle) 레이어
+    private LayerMask castleLayer = 1 << 8;//성(castle) 레이어 
     private Vector3 box, findBox;
 
     private bool isFindEnemy, isHp = false;
@@ -63,7 +63,10 @@ public class Enemy : MonoBehaviour
                 {
                     if (atEnemy.Length > 0)
                     {
-                        atEnemy[0].gameObject.GetComponent<Ally>().enemyHp -= 5;
+                        if (atEnemy[0].gameObject.layer == enemyLayer)
+                          atEnemy[0].gameObject.GetComponent<Ally>().enemyHp -= 5;
+                        else
+                          atEnemy[1].gameObject.GetComponent<Ally>().enemyHp -= 5;
                     }
                     else
                     {
