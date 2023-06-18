@@ -24,7 +24,7 @@ public class Ally : MonoBehaviour
 
     private bool isFindEnemy, isHp = false;
 
-    public int enemyHp = 50;
+    public int allyHp = 50;
 
     [SerializeField] private int stopping;
     #endregion
@@ -89,7 +89,7 @@ public class Ally : MonoBehaviour
 
     private void Hp()
     {
-        if(enemyHp <= 0)
+        if(allyHp <= 0)
         {
             isHp = false;
             ani.SetTrigger("die");

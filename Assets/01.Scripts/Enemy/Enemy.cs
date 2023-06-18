@@ -64,9 +64,9 @@ public class Enemy : MonoBehaviour
                     if (atEnemy.Length > 0)
                     {
                         if (atEnemy[0].gameObject.layer == enemyLayer)
-                          atEnemy[0].gameObject.GetComponent<Ally>().enemyHp -= 5;
-                        else
-                          atEnemy[1].gameObject.GetComponent<Ally>().enemyHp -= 5;
+                            atEnemy[0].gameObject.GetComponent<Ally>().allyHp -= 5;
+                        //else
+                            //atEnemy[1].gameObject.GetComponent<Ally>().allyHp -= 5;
                     }
                     else
                     {
@@ -146,14 +146,14 @@ public class Enemy : MonoBehaviour
         findBox = new Vector3(20, 20, 20);
 
         findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation);
-        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, enemyLayer | castleLayer);
+        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, enemyLayer);
 
 
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
-            for (int i = 0; i < findEnemy.Length; i++)
+            for (int i = 0; i < atEnemy.Length; i++)
             {
-                if (findEnemy[i].gameObject.layer == enemyLayer)
+                if (atEnemy[i].gameObject.layer == enemyLayer)
                 {
                     isFindEnemy = true;
                 }
