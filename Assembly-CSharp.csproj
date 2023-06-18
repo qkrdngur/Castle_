@@ -72,10 +72,26 @@
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\01.Scripts\manager\UiManager.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\Teddy3d.cs" />
+    <Compile Include="Assets\amusedART\StoneMonster\Script\Animation_Test.cs" />
+    <Compile Include="Assets\Kawaii Slimes\Scripts\AI\EnemyAi.cs" />
+    <Compile Include="Assets\Kawaii Slimes\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Kawaii Slimes\Cameras\Scripts\PivotBasedCameraRig.cs" />
+    <Compile Include="Assets\Kawaii Slimes\Cameras\Scripts\FreeLookCam.cs" />
+    <Compile Include="Assets\Kawaii Slimes\Cameras\Scripts\AbstractTargetFollower.cs" />
+    <Compile Include="Assets\Kawaii Slimes\Scripts\AI\Face.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Kawaii Slimes\Shader\UnityURPToonLitShader\NiloZOffset.hlsl" />
+    <None Include="Assets\Kawaii Slimes\Shader\UnityURPToonLitShader\SimpleURPToonLitOutlineExample.shader" />
     <None Include="Assets\02.Assets\GameAssets\Julien Tonsuso\Modular Fantasy Bridges\README.txt" />
+    <None Include="Assets\Kawaii Slimes\Shader\UnityURPToonLitShader\SimpleURPToonLitOutlineExample_LightingEquation.hlsl" />
+    <None Include="Assets\Kawaii Slimes\Cameras\CameraGuidelines.txt" />
+    <None Include="Assets\Kawaii Slimes\Shader\Unity-chan Shader Ver 1.2.1\readme.txt" />
+    <None Include="Assets\Kawaii Slimes\Shader\UnityURPToonLitShader\NiloOutlineUtil.hlsl" />
+    <None Include="Assets\Kawaii Slimes\Shader\Unity-chan Shader Ver 1.2.1\Unitychan_chara_eye.shader" />
+    <None Include="Assets\Kawaii Slimes\Shader\UnityURPToonLitShader\NiloInvLerpRemap.hlsl" />
     <None Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\READ ME.txt" />
+    <None Include="Assets\Kawaii Slimes\Shader\UnityURPToonLitShader\SimpleURPToonLitOutlineExample_Shared.hlsl" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

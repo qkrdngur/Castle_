@@ -346,6 +346,13 @@
 "Assets/02.Assets/GameAssets/TeddyBear1.3/scripts/CameraTeddy3d.cs"
 "Assets/02.Assets/GameAssets/TeddyBear1.3/scripts/spring.cs"
 "Assets/02.Assets/GameAssets/TeddyBear1.3/scripts/Teddy3d.cs"
+"Assets/amusedART/StoneMonster/Script/Animation_Test.cs"
+"Assets/Kawaii Slimes/Cameras/Scripts/AbstractTargetFollower.cs"
+"Assets/Kawaii Slimes/Cameras/Scripts/FreeLookCam.cs"
+"Assets/Kawaii Slimes/Cameras/Scripts/PivotBasedCameraRig.cs"
+"Assets/Kawaii Slimes/Scripts/AI/EnemyAi.cs"
+"Assets/Kawaii Slimes/Scripts/AI/Face.cs"
+"Assets/Kawaii Slimes/Scripts/GameManager.cs"
 -langversion:9.0
 
 /deterministic
