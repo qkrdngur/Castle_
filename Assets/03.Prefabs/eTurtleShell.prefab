@@ -352,6 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 11400000, guid: 65078d57a3316244eafe438b2d8f9b05, type: 2}
+  castleBox: {x: 7, y: 7, z: 7}
   enemyHp: 50
   stopping: 6
 --- !u!195 &3023552018809001202

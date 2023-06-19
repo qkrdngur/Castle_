@@ -150,5 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 11400000, guid: 885e968b35d595948b1c1ee6ebecc54e, type: 2}
+  castleBox: {x: 3, y: 3, z: 3}
   enemyHp: 50
   stopping: 4

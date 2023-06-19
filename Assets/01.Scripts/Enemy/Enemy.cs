@@ -21,7 +21,10 @@ public class Enemy : MonoBehaviour
 
     private LayerMask enemyLayer = 1 << 3;//아군(enemy) 레이어
     private LayerMask castleLayer = 1 << 8;//성(castle) 레이어 
-    private Vector3 box, findBox, castleBox;
+    private Vector3 box, findBox;
+
+    [SerializeField]
+    private Vector3 castleBox;
 
     private bool isFindEnemy, isHp = false;
 
@@ -142,8 +145,6 @@ public class Enemy : MonoBehaviour
         box = new Vector3(4, 4, 4);
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
-        //castle인지 박스
-        castleBox = new Vector3(2, 2, 2);
 
         //enemy
         findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation, enemyLayer);

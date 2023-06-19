@@ -143,7 +143,7 @@ public class Ally : MonoBehaviour
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
         //castle인지 박스
-        castleBox = new Vector3(2,2,2);
+        castleBox = new Vector3(3,3,3);
 
         //enemy
         findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation, enemyLayer);
@@ -164,16 +164,14 @@ public class Ally : MonoBehaviour
             saveObj = findEnemy[0].gameObject;
             isFindEnemy = true;
 
-            for (int i = 0; i < atEnemy.Length; i++)
+         
+            if (atEnemy.Length > 0)
             {
-                if (Vector3.Distance(atEnemy[i].transform.position, transform.position) == stopping)
-                {
-                    Vector3 dir = new Vector3();
-                    dir.x = atEnemy[0].transform.position.y - transform.position.y;
-                    transform.eulerAngles += dir;
-                    ani.SetTrigger("attack");
-                    isHp = true;
-                }
+                Vector3 dir = new Vector3();
+                dir.x = atEnemy[0].transform.position.y - transform.position.y;
+                transform.eulerAngles += dir;
+                ani.SetTrigger("attack");
+                isHp = true;
             }
         }
         else // 적이 감지 안되있을때
