@@ -48,7 +48,7 @@ public class EnemySpawn : MonoBehaviour
         {
             if (mana < 10)
             {
-                yield return new WaitForSeconds(1.2f);
+                yield return new WaitForSeconds(2f);
                 mana++;
             }
             yield return null;

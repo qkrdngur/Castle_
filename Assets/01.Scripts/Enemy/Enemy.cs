@@ -15,13 +15,13 @@ public class Enemy : MonoBehaviour
 
     Animator ani;
     NavMeshAgent agent;
-    Collider[] findEnemy, atEnemy;
+    Collider[] findEnemy, atEnemy, castleEnemy;
 
     private GameObject saveObj;
 
     private LayerMask enemyLayer = 1 << 3;//아군(enemy) 레이어
     private LayerMask castleLayer = 1 << 8;//성(castle) 레이어 
-    private Vector3 box, findBox;
+    private Vector3 box, findBox, castleBox;
 
     private bool isFindEnemy, isHp = false;
 
@@ -50,9 +50,9 @@ public class Enemy : MonoBehaviour
             {
                 if (!isFindEnemy)
                 {
-                    if (atEnemy.Length > 0)
+                    if (castleEnemy.Length > 0)
                     {
-                        atEnemy[0].gameObject.GetComponent<CastleHp>().castleHp -= 5;
+                        castleEnemy[0].gameObject.GetComponent<CastleHp>().castleHp -= 5;
                     }
                     else
                     {
@@ -65,10 +65,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (atEnemy.Length > 0)
                     {
-                        if (atEnemy[0].gameObject.layer == enemyLayer)
                             atEnemy[0].gameObject.GetComponent<Ally>().allyHp -= 5;
-                        //else
-                            //atEnemy[1].gameObject.GetComponent<Ally>().allyHp -= 5;
                     }
                     else
                     {
@@ -145,26 +142,36 @@ public class Enemy : MonoBehaviour
         box = new Vector3(4, 4, 4);
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
+        //castle인지 박스
+        castleBox = new Vector3(2, 2, 2);
 
+        //enemy
         findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation, enemyLayer);
         atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, enemyLayer);
+        //castle
+        castleEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, castleLayer);
 
 
+        if(castleEnemy.Length > 0)
+        {
+            isFindEnemy = false;
+            ani.SetTrigger("attack");
+            isHp = true;
+        }
+
+        #region 적감지
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
             saveObj = findEnemy[0].gameObject;
             isFindEnemy = true;
 
-            for (int i = 0; i < atEnemy.Length; i++)
+            if (atEnemy.Length > 0)
             {
-                if (Vector3.Distance(atEnemy[i].transform.position, transform.position) == stopping)
-                {
-                    Vector3 dir = new Vector3();
-                    dir.x = atEnemy[0].transform.position.y - transform.position.y;
-                    transform.eulerAngles += dir;
-                    ani.SetTrigger("attack");
-                    isHp = true;
-                }
+                Vector3 dir = new Vector3();
+                dir.x = atEnemy[0].transform.position.y - transform.position.y;
+                transform.eulerAngles += dir;
+                ani.SetTrigger("attack");
+                isHp = true;
             }
         }
         else // 적이 감지 안되있을때
@@ -176,4 +183,5 @@ public class Enemy : MonoBehaviour
         }
         agent.enabled = true;
     }
+    #endregion
 }

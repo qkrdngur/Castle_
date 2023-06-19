@@ -16,17 +16,18 @@ public class Ally : MonoBehaviour
 
     Animator ani;
     NavMeshAgent agent;
-    Collider[] findEnemy, atEnemy;
+    Collider[] findEnemy, atEnemy, castleEnemy;
 
     private LayerMask enemyLayer = 1 << 7;//적(enemy) 레이어
     private LayerMask castleLayer = 1 << 8;//성(castle) 레이어
-    private Vector3 box, findBox;
+    private Vector3 box, findBox, castleBox;
 
     private bool isFindEnemy, isHp = false;
 
     public int allyHp = 50;
 
     [SerializeField] private int stopping;
+    private GameObject saveObj;
     #endregion
 
     private void Awake()
@@ -49,9 +50,9 @@ public class Ally : MonoBehaviour
             {
                 if (!isFindEnemy)
                 {
-                    if (atEnemy.Length > 0)
+                    if (castleEnemy.Length > 0)
                     {
-                        atEnemy[0].gameObject.GetComponent<CastleHp>().castleHp -= 5;
+                        castleEnemy[0].gameObject.GetComponent<CastleHp>().castleHp -= 5;
                     }
                     else
                     {
@@ -104,7 +105,7 @@ public class Ally : MonoBehaviour
             {
                 agent.stoppingDistance = stopping;
 
-                Vector3 dir = new Vector3(findEnemy[0].transform.position.x, transform.position.y, findEnemy[0].transform.position.z);
+                Vector3 dir = new Vector3(saveObj.transform.position.x, transform.position.y, saveObj.transform.position.z);
                 agent.SetDestination(dir);
             }
             else
@@ -141,22 +142,29 @@ public class Ally : MonoBehaviour
         box = new Vector3(4, 4, 4);
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
+        //castle인지 박스
+        castleBox = new Vector3(2,2,2);
 
-        findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation);
-        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation , enemyLayer | castleLayer);
+        //enemy
+        findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation, enemyLayer);
+        atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, enemyLayer);
+        //castle
+        castleEnemy = Physics.OverlapBox(transform.position, castleBox, transform.rotation, castleLayer);
 
+
+        if (castleEnemy.Length > 0)
+        {
+            isFindEnemy = false;
+            ani.SetTrigger("attack");
+            isHp = true;
+        }
 
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
-            for(int i = 0; i < findEnemy.Length; i++)
-            {
-                if(findEnemy[i].gameObject.layer == enemyLayer)
-                {
-                    isFindEnemy = true;
-                }
-            }
-            
-            for(int i = 0; i < atEnemy.Length; i++)
+            saveObj = findEnemy[0].gameObject;
+            isFindEnemy = true;
+
+            for (int i = 0; i < atEnemy.Length; i++)
             {
                 if (Vector3.Distance(atEnemy[i].transform.position, transform.position) == stopping)
                 {
@@ -171,10 +179,10 @@ public class Ally : MonoBehaviour
         else // 적이 감지 안되있을때
         {
             ani.SetTrigger("walk");
-            isFindEnemy=false;
+            isFindEnemy = false;
             findEnemy = null;
             atEnemy = null;
         }
-         agent.enabled = true;
+        agent.enabled = true;
     }
 }
