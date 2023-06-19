@@ -117,17 +117,17 @@ public class Enemy : MonoBehaviour
 
                 if (transform.position.z <= 0)
                 {
-                    if (uiManager.towerPos[0].activeSelf == true)
-                        agent.SetDestination(uiManager.towerPos[0].transform.position);
+                    if (uiManager.etowerPos[0].activeSelf == true)
+                        agent.SetDestination(uiManager.etowerPos[0].transform.position);
                     else
-                        agent.SetDestination(uiManager.towerPos[2].transform.position);
+                        agent.SetDestination(uiManager.etowerPos[2].transform.position);
                 }
                 else
                 {
-                    if (uiManager.towerPos[1].activeSelf == true)
-                        agent.SetDestination(uiManager.towerPos[1].transform.position);
+                    if (uiManager.etowerPos[1].activeSelf == true)
+                        agent.SetDestination(uiManager.etowerPos[1].transform.position);
                     else
-                        agent.SetDestination(uiManager.towerPos[2].transform.position);
+                        agent.SetDestination(uiManager.etowerPos[2].transform.position);
                 }
             }
         }
@@ -154,6 +154,7 @@ public class Enemy : MonoBehaviour
         {
             for (int i = 0; i < findEnemy.Length; i++)
             {
+                //여기 수정
                 if(findEnemy[i].gameObject.layer == enemyLayer |
                     findEnemy[i].gameObject.layer == castleLayer)
                 {

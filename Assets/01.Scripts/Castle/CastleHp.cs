@@ -26,7 +26,7 @@ public class CastleHp : MonoBehaviour
         if(transform.position.y < -10)
             gameObject.SetActive(false);
 
-        if (uiManager.towerPos[2].activeSelf == false)
+        if (uiManager.towerPos[2].activeSelf == false || uiManager.etowerPos[2].activeSelf == false)
         {
 
         }
