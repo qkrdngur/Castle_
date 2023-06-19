@@ -146,25 +146,14 @@ public class Enemy : MonoBehaviour
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
 
-        findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation);
+        findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation, enemyLayer);
         atEnemy = Physics.OverlapBox(transform.position, box, transform.rotation, enemyLayer);
 
 
         if (findEnemy.Length > 0) // 타워쪽으로 이동하다가 적이 인식범위 안에 들어왔을때
         {
-            for (int i = 0; i < findEnemy.Length; i++)
-            {
-                //여기 수정
-                if(findEnemy[i].gameObject.layer == enemyLayer |
-                    findEnemy[i].gameObject.layer == castleLayer)
-                {
-                    saveObj = findEnemy[i].gameObject;
-                }
-                if (findEnemy[i].gameObject.layer == enemyLayer)
-                {
-                    isFindEnemy = true;
-                }
-            }
+            saveObj = findEnemy[0].gameObject;
+            isFindEnemy = true;
 
             for (int i = 0; i < atEnemy.Length; i++)
             {

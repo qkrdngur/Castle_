@@ -22,7 +22,7 @@ public class CastleHp : MonoBehaviour
             anim.SetTrigger("down");
             cnt = 1;
         }
-
+        Debug.Log(castleHp);
         if(transform.position.y < -10)
             gameObject.SetActive(false);
 

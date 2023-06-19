@@ -379,4 +379,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 11400000, guid: 381315bad6cab2d4487ea32d1262efb9, type: 2}
   enemyHp: 50
-  stopping: 0
+  stopping: 6
