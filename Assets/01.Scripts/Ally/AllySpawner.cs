@@ -20,7 +20,7 @@ public class AllySpawner : MonoBehaviour
     public AllyManager EnemyManager { set { manager = value; } }
 
     private UiManager uiManager;
-    public int[] savearr = new int [6];
+    public int[] savearr = new int [7];
     private void Awake()
     {
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
@@ -32,7 +32,7 @@ public class AllySpawner : MonoBehaviour
         for(int i = 0; i < 5; i++)
         {
             int temp = savearr[i];
-            manager.SaveRandom = Random.Range(0, 5);
+            manager.SaveRandom = Random.Range(0, 7);
             savearr[i] = manager.SaveRandom;
             manager.SaveRandom = temp;
             uiManager.images[i].sprite = uiManager.sprites[manager.SaveRandom];

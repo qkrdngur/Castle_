@@ -142,7 +142,7 @@ public class Enemy : MonoBehaviour
     void Attack()
     {
         //공격범위 감지 박스
-        box = new Vector3(4, 4, 4);
+        box = new Vector3(8, 8, 8);
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
 

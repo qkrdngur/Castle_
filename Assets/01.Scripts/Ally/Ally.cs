@@ -23,6 +23,7 @@ public class Ally : MonoBehaviour
     private Vector3 box, findBox, castleBox;
 
     private bool isFindEnemy, isHp = false;
+    private bool isActive = false;
 
     public int allyHp = 50;
 
@@ -40,6 +41,21 @@ public class Ally : MonoBehaviour
     private void Start()
     {
         StartCoroutine(attHp());
+        StartCoroutine(activeObj());
+    }
+
+    IEnumerator activeObj()
+    {
+        while(true)
+        {
+            if(isActive)
+            {
+                yield return new WaitForSeconds(1f);
+                gameObject.SetActive(false);
+                isActive = !isActive;
+            }
+            yield return null;
+        }
     }
 
     IEnumerator attHp()
@@ -83,6 +99,7 @@ public class Ally : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(allyHp);
         Attack();
         Follow();
         Hp();
@@ -94,6 +111,7 @@ public class Ally : MonoBehaviour
         {
             isHp = false;
             ani.SetTrigger("die");
+            isActive = true;
         }
     }
 
@@ -139,11 +157,11 @@ public class Ally : MonoBehaviour
     void Attack()
     {
         //공격범위 감지 박스
-        box = new Vector3(4, 4, 4);
+        box = new Vector3(8, 8, 8);
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
         //castle인지 박스
-        castleBox = new Vector3(3,3,3);
+        castleBox = new Vector3(8,8,8);
 
         //enemy
         findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation, enemyLayer);

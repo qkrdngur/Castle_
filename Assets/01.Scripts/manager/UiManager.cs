@@ -11,4 +11,5 @@ public class UiManager : MonoBehaviour
     public Sprite[] sprites;
     public GameObject[] towerPos;
     public GameObject[] etowerPos;
+    public GameObject panel;
 }
