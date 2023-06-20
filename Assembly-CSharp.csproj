@@ -70,6 +70,7 @@
     <Compile Include="Assets\Kawaii Slimes\Cameras\Scripts\PivotBasedCameraRig.cs" />
     <Compile Include="Assets\01.Scripts\Ally\Ally.cs" />
     <Compile Include="Assets\Kawaii Slimes\Cameras\Scripts\FreeLookCam.cs" />
+    <Compile Include="Assets\01.Scripts\UI\Layre.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\CameraTeddy3d.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\WheelController.cs" />
     <Compile Include="Assets\Kawaii Slimes\Scripts\AI\EnemyAi.cs" />

@@ -65,4 +65,9 @@ public class Menu : MonoBehaviour
         PlayerPrefs.SetInt("Onspawner", 1);
         Count();
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }    
 }

@@ -100,18 +100,18 @@ public class Ally : MonoBehaviour
                 //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
                 yield return new WaitForSeconds(1.2f);
             }
-            else
-                audio.Pause();
             yield return null;
         }
     }
 
     private void Update()
     {
-        Debug.Log(allyHp);
         Attack();
         Follow();
         Hp();
+
+        if (atEnemy.Length <= 0)
+            audio.Pause();
     }
 
     private void Hp()
