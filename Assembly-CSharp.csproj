@@ -79,6 +79,7 @@
     <Compile Include="Assets\02.Assets\GameAssets\AurynSky\Forest Pack\Scripts\Rotator.cs" />
     <Compile Include="Assets\01.Scripts\manager\UiManager.cs" />
     <Compile Include="Assets\02.Assets\GameAssets\TeddyBear1.3\scripts\Teddy3d.cs" />
+    <Compile Include="Assets\01.Scripts\UI\Menu.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

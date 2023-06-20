@@ -341,6 +341,7 @@
 "Assets/01.Scripts/manager/UiManager.cs"
 "Assets/01.Scripts/SkillEnergy/SkillEnergy.cs"
 "Assets/01.Scripts/UI/DrogAndDrop.cs"
+"Assets/01.Scripts/UI/Menu.cs"
 "Assets/02.Assets/GameAssets/AurynSky/Forest Pack/Scripts/ChestDemo.cs"
 "Assets/02.Assets/GameAssets/AurynSky/Forest Pack/Scripts/MaterialMover.cs"
 "Assets/02.Assets/GameAssets/AurynSky/Forest Pack/Scripts/Rotator.cs"

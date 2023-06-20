@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     private Vector3 castleBox;
 
-    private bool isFindEnemy, isHp = false;
+    private bool isFindEnemy, isHp = false, isDie = false;
 
     public int enemyHp = 50;
 
@@ -43,7 +43,24 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         StartCoroutine(attHp());
+        StartCoroutine(Die());
     }
+
+
+    IEnumerator Die()
+    {
+        while(true)
+        {
+            if(isDie)
+            {
+               yield return new WaitForSeconds(1);
+                Destroy(this);
+                isDie = !isDie;
+            }
+            yield return null;
+        }
+    }
+
 
     IEnumerator attHp()
     {
@@ -97,6 +114,7 @@ public class Enemy : MonoBehaviour
         {
             isHp = false;
             ani.SetTrigger("die");
+            isDie = true;
         }
     }
 

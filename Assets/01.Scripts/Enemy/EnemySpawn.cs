@@ -5,12 +5,17 @@ using UnityEngine;
 public class EnemySpawn : MonoBehaviour
 {
     private AllySpawner spawner;
-    public AllyManager manager;
+
+    [SerializeField]
+    private GameObject spawnObj;
 
     private int[] saveIdx = new int[7] { 0,0,0,0,0,0, 0};
     private int[] manaIdx = new int[7] { 3,2,4,4,3,3, 4};
+
     private bool isrand = false;
-    private int mana;
+
+    private float spawnCool = 3f;
+    private int mana = 0;
 
     void Awake()
     {
@@ -23,6 +28,13 @@ public class EnemySpawn : MonoBehaviour
         StartCoroutine(RandomIdx());
 
         isrand = true;
+
+        spawnCool = PlayerPrefs.GetInt("Onspawner") == 1?   2.5f :  spawnCool;
+
+        if (PlayerPrefs.GetInt("Onspawner") == 0)
+        {
+            spawnObj.SetActive(false);
+        }
     }
 
     void Update()
@@ -48,7 +60,8 @@ public class EnemySpawn : MonoBehaviour
         {
             if (mana < 10)
             {
-                yield return new WaitForSeconds(2f);
+                spawnCool = Random.Range(spawnCool, spawnCool + 0.2f);
+                yield return new WaitForSeconds(spawnCool);
                 mana++;
             }
             yield return null;

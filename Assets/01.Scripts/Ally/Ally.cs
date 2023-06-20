@@ -51,7 +51,7 @@ public class Ally : MonoBehaviour
             if(isActive)
             {
                 yield return new WaitForSeconds(1f);
-                gameObject.SetActive(false);
+                Destroy(this);
                 isActive = !isActive;
             }
             yield return null;
