@@ -101,8 +101,6 @@ public class Enemy : MonoBehaviour
                 //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
                 yield return new WaitForSeconds(1.2f);
             }
-            else
-                audio.Stop();
             yield return null;
         }
     }
@@ -112,6 +110,9 @@ public class Enemy : MonoBehaviour
         Attack();
         Follow();
         Hp();
+
+        if (atEnemy.Length <= 0)
+            audio.Pause();
     }
 
     private void Hp()

@@ -33,6 +33,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
+        uiManager.limit.SetActive(true);
         DefaultPos = this.transform.position;
     }
 
@@ -47,7 +48,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         Cursor.lockState = CursorLockMode.Confined;
 
         this.transform.position = DefaultPos;
-        manager.ButtonNum = Random.Range(0, 7);
+        manager.ButtonNum = Random.Range(0, 6);
         manager.SaveRandom = manager.ButtonNum;
         manager.GClickObject = EventSystem.current.currentSelectedGameObject;
 
@@ -68,6 +69,8 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
                         skillE.mana -= manager.Mana;
                         Instantiate(spawner.pPrefabs[spawner.savearr[i]], instPos, Quaternion.identity);
 
+                        uiManager.limit.SetActive(false);
+
                         uiManager.images[i].sprite = uiManager.sprites[manager.ButtonNum];
                         spawner.savearr[i] = manager.ButtonNum;
                     }
@@ -75,23 +78,12 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
                 }
             }
         }
+        else
+            uiManager.limit.SetActive(false); 
     }
 
     bool CheckBreak()
     {
-        if (uiManager.towerPos.Length == 1)
-        {
-            return (instPos.z >= 15) && (instPos.z <= -15) && (instPos.x >= 52);
-        }
-        else if (uiManager.towerPos[0].activeSelf == false)
-        {
-            return (instPos.z <= -15) && (instPos.x >= 52);
-        }
-        else if (uiManager.towerPos[1].activeSelf == false)
-        {
-            return (instPos.z >= 15) && (instPos.x >= 52);
-        }
-        else
             return (instPos.x >= 52);
     }
 }

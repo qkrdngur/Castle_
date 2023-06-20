@@ -8,6 +8,7 @@ using TMPro;
 public class CastleHp : MonoBehaviour
 {
     UiManager uiManager;
+    AudioSource audio;
 
     public float castleHp = 100;
     public int cnt = 0;
@@ -20,6 +21,7 @@ public class CastleHp : MonoBehaviour
     {
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
         text = GameObject.Find("GameOver").GetComponent<TextMeshProUGUI>();
+        audio = GameObject.Find("break").GetComponent<AudioSource>();
         anim = GetComponent<Animator>();
     }
 
@@ -27,12 +29,16 @@ public class CastleHp : MonoBehaviour
     {
         if(castleHp <= 0)
         {
+            audio.Play();
             anim.SetTrigger("down");
             cnt = 1;
         }
 
         if(transform.position.y < -10)
+        {
+            audio.Stop();
             gameObject.SetActive(false);
+        }
 
 
         if (uiManager.towerPos[2].activeSelf == false)

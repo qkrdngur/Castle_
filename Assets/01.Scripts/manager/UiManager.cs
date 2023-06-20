@@ -12,4 +12,5 @@ public class UiManager : MonoBehaviour
     public GameObject[] towerPos;
     public GameObject[] etowerPos;
     public GameObject panel;
+    public GameObject limit;
 }

@@ -9,8 +9,8 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField]
     private GameObject spawnObj;
 
-    private int[] saveIdx = new int[7] { 0,0,0,0,0,0, 0};
-    private int[] manaIdx = new int[7] { 3,2,4,4,3,3, 4};
+    private int[] saveIdx = new int[6] { 0,0,0,0,0,0};
+    private int[] manaIdx = new int[6] { 3,2,4,4,3,3};
 
     private bool isrand = false;
 
@@ -75,7 +75,7 @@ public class EnemySpawn : MonoBehaviour
         {
             if (isrand)
             {
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 6; i++)
                 {
                     saveIdx[i] = i;
                 }
@@ -83,8 +83,8 @@ public class EnemySpawn : MonoBehaviour
                 int temp, idx1, idx2;
                 for (int i = 0; i < 10; i++)
                 {
-                    idx1 = Random.Range(0, 7);
-                    idx2 = Random.Range(0, 7);
+                    idx1 = Random.Range(0, 6);
+                    idx2 = Random.Range(0, 6);
                     temp = saveIdx[idx1];
                     saveIdx[idx1] = saveIdx[idx2];
                     saveIdx[idx2] = temp;

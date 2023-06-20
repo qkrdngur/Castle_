@@ -101,7 +101,7 @@ public class Ally : MonoBehaviour
                 yield return new WaitForSeconds(1.2f);
             }
             else
-                audio.Stop();
+                audio.Pause();
             yield return null;
         }
     }
