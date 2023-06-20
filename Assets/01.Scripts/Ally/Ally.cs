@@ -9,6 +9,8 @@ public class Ally : MonoBehaviour
 {
     #region Header
 
+    AudioSource audio;
+
     [SerializeField]
     private AllyManager manager;
 
@@ -20,7 +22,10 @@ public class Ally : MonoBehaviour
 
     private LayerMask enemyLayer = 1 << 7;//적(enemy) 레이어
     private LayerMask castleLayer = 1 << 8;//성(castle) 레이어
-    private Vector3 box, findBox, castleBox;
+    private Vector3 box, findBox;
+
+    [SerializeField]
+    private Vector3 castleBox;
 
     private bool isFindEnemy, isHp = false;
     private bool isActive = false;
@@ -33,6 +38,7 @@ public class Ally : MonoBehaviour
 
     private void Awake()
     {
+        audio = GameObject.Find("Attack").GetComponent<AudioSource>();
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
         agent = GetComponent<NavMeshAgent>();
         ani = GetComponent<Animator>();
@@ -51,7 +57,7 @@ public class Ally : MonoBehaviour
             if(isActive)
             {
                 yield return new WaitForSeconds(1f);
-                Destroy(this);
+                Destroy(gameObject);
                 isActive = !isActive;
             }
             yield return null;
@@ -64,6 +70,7 @@ public class Ally : MonoBehaviour
         {
             if (isHp)
             {
+                audio.Play();
                 if (!isFindEnemy)
                 {
                     if (castleEnemy.Length > 0)
@@ -79,20 +86,22 @@ public class Ally : MonoBehaviour
                 }
                 else
                 {
-                    if(atEnemy.Length > 0)
+                    if (atEnemy.Length > 0)
                     {
-                       atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
+                        atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp -= 5;
                     }
                     else
                     {
                         ani.SetTrigger("walk");
-                        atEnemy=null;
+                        atEnemy = null;
                         findEnemy = null;
                     }
                 }
-              //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
+                //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
                 yield return new WaitForSeconds(1.2f);
             }
+            else
+                audio.Stop();
             yield return null;
         }
     }
@@ -160,8 +169,6 @@ public class Ally : MonoBehaviour
         box = new Vector3(8, 8, 8);
         //적인지범위 감지 박스
         findBox = new Vector3(20, 20, 20);
-        //castle인지 박스
-        castleBox = new Vector3(8,8,8);
 
         //enemy
         findEnemy = Physics.OverlapBox(transform.position, findBox, transform.rotation, enemyLayer);

@@ -229,15 +229,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2798996094805122368}
-  - component: {fileID: 2829692759430359136}
   - component: {fileID: 2794777059703799626}
   - component: {fileID: -12975484515691733}
   - component: {fileID: -8625668142430796734}
   - component: {fileID: 6859714623212287848}
   - component: {fileID: 4561590082163246841}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: eStoneMonster
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,26 +258,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!111 &2829692759430359136
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2796484961126006794}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 6098175c4d4a46343be4d6857847330b, type: 3}
-  m_Animations:
-  - {fileID: 7400000, guid: 6098175c4d4a46343be4d6857847330b, type: 3}
-  - {fileID: 7400000, guid: 87aca181203408543942305a65e47c0b, type: 3}
-  - {fileID: 7400000, guid: 3cab52bd39b9a5f4fb028f9ae0ecbc91, type: 3}
-  - {fileID: 7400000, guid: 8af2259933ccf2e47b0a9493f3516fc4, type: 3}
-  - {fileID: 7400000, guid: 3e63abeab47efea44a9868d7d769abcf, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!95 &2794777059703799626
 Animator:
   serializedVersion: 5

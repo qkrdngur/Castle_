@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 
 public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
+    AudioSource audio;
+
     public static Vector2 DefaultPos, currentPos, mousePos;
     public static Vector3 instPos;
 
@@ -18,6 +20,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
     void Awake()
     {
+        audio = GameObject.Find("SpawnSound").GetComponent<AudioSource>();
         skillE = GameObject.Find("PlayerMana").GetComponent<SkillEnergy>();
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
         spawner = GameObject.Find("AllySpawner").GetComponent<AllySpawner>();
@@ -44,7 +47,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         Cursor.lockState = CursorLockMode.Confined;
 
         this.transform.position = DefaultPos;
-        manager.ButtonNum = Random.Range(0, 6);
+        manager.ButtonNum = Random.Range(0, 7);
         manager.SaveRandom = manager.ButtonNum;
         manager.GClickObject = EventSystem.current.currentSelectedGameObject;
 
@@ -61,6 +64,7 @@ public class DrogAndDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
                 {
                     if(skillE.mana >= manager.Mana)
                     {
+                        audio.Play();
                         skillE.mana -= manager.Mana;
                         Instantiate(spawner.pPrefabs[spawner.savearr[i]], instPos, Quaternion.identity);
 

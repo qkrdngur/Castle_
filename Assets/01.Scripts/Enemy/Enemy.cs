@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
 {
     #region Header
 
+    AudioSource audio;
+
     public AllyManager manager;
 
     private UiManager uiManager;
@@ -20,7 +22,7 @@ public class Enemy : MonoBehaviour
     private GameObject saveObj;
 
     private LayerMask enemyLayer = 1 << 3;//아군(enemy) 레이어
-    private LayerMask castleLayer = 1 << 8;//성(castle) 레이어 
+    private LayerMask castleLayer = 1 << 9;//성(castle) 레이어 
     private Vector3 box, findBox;
 
     [SerializeField]
@@ -35,6 +37,7 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        audio = GameObject.Find("Attack").GetComponent<AudioSource>();
         uiManager = GameObject.Find("UiManager").GetComponent<UiManager>();
         agent = GetComponent<NavMeshAgent>();
         ani = GetComponent<Animator>();
@@ -54,7 +57,7 @@ public class Enemy : MonoBehaviour
             if(isDie)
             {
                yield return new WaitForSeconds(1);
-                Destroy(this);
+                Destroy(gameObject);
                 isDie = !isDie;
             }
             yield return null;
@@ -68,6 +71,7 @@ public class Enemy : MonoBehaviour
         {
             if (isHp)
             {
+                audio.Play();
                 if (!isFindEnemy)
                 {
                     if (castleEnemy.Length > 0)
@@ -97,6 +101,8 @@ public class Enemy : MonoBehaviour
                 //  Debug.Log(atEnemy[0].gameObject.GetComponent<Enemy>().enemyHp);
                 yield return new WaitForSeconds(1.2f);
             }
+            else
+                audio.Stop();
             yield return null;
         }
     }

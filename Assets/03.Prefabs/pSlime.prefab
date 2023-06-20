@@ -150,5 +150,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 11400000, guid: 885e968b35d595948b1c1ee6ebecc54e, type: 2}
+  castleBox: {x: 4, y: 4, z: 4}
   allyHp: 50
   stopping: 4
