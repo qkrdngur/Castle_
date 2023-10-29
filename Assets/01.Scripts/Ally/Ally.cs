@@ -110,8 +110,8 @@ public class Ally : MonoBehaviour
         Follow();
         Hp();
 
-        if (atEnemy.Length <= 0)
-            audio.Pause();
+        //if (atEnemy.Length <= 0)
+        //    audio.Pause();
     }
 
     private void Hp()
